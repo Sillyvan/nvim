@@ -5,8 +5,6 @@ vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.wo.number = true
 vim.wo.relativenumber = true
-vim.cmd("colorscheme torte")
-
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -24,3 +22,9 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 
+vim.api.nvim_exec([[
+  augroup AutoCmds
+    autocmd!
+    autocmd BufWritePost * execute 'normal! \<Leader>gf'
+  augroup END
+]], false)
