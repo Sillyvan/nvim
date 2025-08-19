@@ -20,9 +20,11 @@ return {
 
 			require("mason-lspconfig").setup_handlers({
 				function(server_name)
-					lspconfig[server_name].setup({
-						capabilities = capabilities,
-					})
+					if server_name ~= "luau_lsp" then
+						lspconfig[server_name].setup({
+							capabilities = capabilities,
+						})
+					end
 				end,
 			})
 			vim.diagnostic.config({
