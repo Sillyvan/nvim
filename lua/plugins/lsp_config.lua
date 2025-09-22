@@ -6,26 +6,15 @@ return {
 		end,
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
-		config = function()
-			require("mason-lspconfig").setup()
-		end,
-	},
-	{
 		"neovim/nvim-lspconfig",
-		dependencies = { "saghen/blink.cmp" },
+		dependencies = { "williamboman/mason-lspconfig.nvim" },
 		config = function()
-			local capabilities = require("blink.cmp").get_lsp_capabilities()
-			local lspconfig = require("lspconfig")
-
-			require("mason-lspconfig").setup_handlers({
-				function(server_name)
-					if server_name ~= "luau_lsp" then
-						lspconfig[server_name].setup({
-							capabilities = capabilities,
-						})
-					end
-				end,
+			require("mason-lspconfig").setup({
+				automatic_enable = {
+					exclude = {
+						"luau_lsp",
+					},
+				},
 			})
 			vim.diagnostic.config({
 				virtual_text = true,
