@@ -1,6 +1,7 @@
 return {
 	{
 		"williamboman/mason.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("mason").setup()
 		end,
@@ -8,6 +9,25 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = { "williamboman/mason-lspconfig.nvim" },
+		ft = {
+			"lua",
+			"javascript",
+			"typescript",
+			"javascriptreact",
+			"typescriptreact",
+			"python",
+			"rust",
+			"go",
+			"json",
+			"html",
+			"css",
+			"svelte",
+			"astro",
+			"yaml",
+			"toml",
+			"markdown",
+			"ruby",
+		},
 		config = function()
 			require("mason-lspconfig").setup({
 				automatic_enable = {
